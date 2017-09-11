@@ -1,9 +1,11 @@
+// @flow
+
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import socket from '../../../socket';
 
 export default class TestPage extends React.Component {
-  constructor(props) {
+  constructor(props: mixed) {
     super(props);
 
     this.state = {
@@ -15,15 +17,13 @@ export default class TestPage extends React.Component {
     socket.on('data', this.handleData);
   }
 
-  handleData = (data) => {
+  handleData = (data : mixed) => {
     this.setState({
       data,
     });
   };
 
   render() {
-    console.log(this.state.data);
-
     return (
       <View style={styles.container}>
         <Text style={styles.labels}>{JSON.stringify(this.state.data, null, 2)}</Text>
